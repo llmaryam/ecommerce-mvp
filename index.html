@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هم‌موجودی | شبکه تبادل موجودی فروشندگان خرد</title>
+  <!-- فونت وزیرمتن و تیلویند -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 900: '#064e3b' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; color: #f1f5f9; }
+    .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card-hover:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-2px); transition: all 0.2s ease; }
+    .badge-glow { box-shadow: 0 0 15px rgba(16, 185, 129, 0.25); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+  <!-- نوار ناوبری دوگانه بالا (Sticky Dual-Navigation Header) -->
+  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center font-black text-xl text-slate-950 shadow-lg shadow-brand-500/20">
+          هم
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-lg text-white tracking-tight">هم‌موجودی</span>
+            <span class="text-[10px] bg-brand-500/10 text-brand-400 border border-brand-500/30 px-2 py-0.5 rounded-full font-bold">فاز اول: ایده بالغ + MVP</span>
+          </div>
+          <p class="text-xs text-slate-400">شبکه تبادل و نجات سفارشات فروشندگان خرد</p>
+        </div>
+      </div>
+
+      <!-- معماری ناوبری دوگانه بر اساس الزامات پروژه -->
+      <div class="flex items-center bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+        <button id="nav-dossier" onclick="switchTab('dossier')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition-all bg-brand-600 text-white shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          پرونده تحلیلی کسب‌وکار (بخش الف)
+        </button>
+        <button id="nav-mvp" onclick="switchTab('mvp')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-white transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          محیط تعاملی MVP (بخش ب)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- بخش الف: پرونده تحلیلی کسب‌وکار -->
+  <!-- ========================================== -->
+  <main id="dossier-view" class="flex-grow max-w-7xl mx-auto px-4 py-8 space-y-12">
+    
+    <!-- ۱. صفحه فرود اولیه (Hero Landing) -->
+    <section class="glass-card rounded-3xl p-6 md:p-12 relative overflow-hidden border-slate-800">
+      <div class="absolute -top-24 -left-24 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-3xl space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/60 text-brand-300 border border-brand-500/30">
+          <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+          راهکار همتا‌به‌همتا (P2P) برای بازار ۸۸.۷ همتی اینستاگرام
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black leading-tight text-white">
+          وقتی موجودی نداری، <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">مشتری را از دست نده.</span>
+        </h1>
+        <p class="text-base md:text-lg text-slate-300 leading-relaxed">
+          «هم‌موجودی» سفارش‌های بدون کالای شما را فوراً به فروشنده‌ای که کالا را در قفسه دارد وصل می‌کند. وجه پرداختی تا زمان تحویل فیزیکی نزد سامانه امانت می‌ماند؛ شما مشتری را حفظ می‌کنید، همکارتان سود می‌برد و اعتبارتان رشد می‌کند.
+        </p>
+
+        <!-- مخاطب هدف -->
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs md:text-sm text-slate-300 flex items-center gap-3">
+          <span class="text-brand-400 font-bold">🎯 مخاطب هدف:</span>
+          فروشندگان خرد اینستاگرامی (۱۵۰ تا چند هزار دنبال‌کننده فعال) در حوزه‌های پوشاک، اکسسوری، دکوری و کالای مصرفی سبک فاقد انبار و بودجه خرید عمده.
+        </div>
+
+        <!-- دکمه‌های فراخوان اقدام (CTA) -->
+        <div class="flex flex-wrap gap-4 pt-2">
+          <button onclick="switchTab('mvp')" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-500 text-slate-950 font-bold text-sm shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-[1.02] transition-all flex items-center gap-2">
+            <span>سفارش بدون موجودی را وصل کن</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+          <button onclick="switchTab('mvp'); showRegisterModal();" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm border border-slate-700 transition-all">
+            اولین موجودی‌ات را ثبت کن
+          </button>
+          <button onclick="alert('شما به لیست ۳۵۰ فروشنده آزمایشی بتا اضافه شدید!')" class="px-5 py-3.5 rounded-xl text-brand-400 font-medium text-xs hover:text-brand-300 transition-all underline underline-offset-8">
+            عضویت در لیست انتظار MVP
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ۲. تبیین اصطکاک و صورت‌بندی مسئله -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="glass-card p-6 md:p-8 rounded-2xl space-y-4">
+        <div class="flex items-center gap-2 text-rose-400 font-bold text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <span>اصطکاک بازار و وضعیت موجود</span>
+        </div>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          بازار اینستاگرام ایران در سال ۱۴۰۳ با **۱۳۰ هزار فروشگاه فعال** و **۸۸.۷ همت گردش مالی** مواجه است، اما کاملاً اتمیزه و فردی اداره می‌شود. فروشنده خرد تنها با یک گوشی کار می‌کند. با تمام شدن موجودی، سفارش رد می‌شود؛ ۱۰٪ رد سفارش در فروشگاهی با ۲۰ فروش روزانه، برابر با از دست رفتن قطعی **۲ مشتری در روز** و صدمه دائم به اعتبار پیج است.
+        </p>
+        <div class="space-y-2 pt-2">
+          <div class="text-xs text-slate-400"><strong class="text-slate-200">نارسایی دراپ‌شیپینگ‌های سنتی:</strong> یک‌طرفه بودن و وابستگی اجباری به عمده‌فروشان بزرگ.</div>
+          <div class="text-xs text-slate-400"><strong class="text-slate-200">نارسایی ابزارهای زیترون/فروشینو:</strong> فقط شمارش کالای خود فروشنده، نه حل کالای ناموجود.</div>
+          <div class="text-xs text-slate-400"><strong class="text-slate-200">گروه‌های تلگرامی جاری:</strong> فاقد لایه امانی، با ریسک کلاهبرداری و عدم ارسال.</div>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 md:p-8 rounded-2xl space-y-4">
+        <div class="flex items-center gap-2 text-brand-400 font-bold text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>صورت‌بندی دقیق مسئله (Problem Statement)</span>
+        </div>
+        <ul class="space-y-3 text-xs md:text-sm text-slate-300">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold mt-1">▪</span>
+            <div><strong class="text-white">مبتلابه مشخص:</strong> فروشندگان خرد آنلاین با حجم ۵ تا ۵۰ سفارش روزانه بدون انبارداری رسمی.</div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold mt-1">▪</span>
+            <div><strong class="text-white">وضعیت نامطلوب:</strong> سوخت ۱۰۰٪ سود سفارش‌های بدون موجودی و سرگردانی مشتری نهایی.</div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold mt-1">▪</span>
+            <div><strong class="text-white">وضعیت مطلوب سنجش‌پذیر:</strong> کاهش رد سفارش تا بیش از ۴۰٪ از طریق اتصال به کاتالوگ ابری همتایان.</div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold mt-1">▪</span>
+            <div><strong class="text-white">دامنه متناسب MVP:</strong> راه‌اندازی استخر مجازی تعامل دستی در قالب فرم + گروه پشتیبانی امانی.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ۳. مدل اتلاف زمان/هزینه + نقشه سفر مشتری (موارد تکمیلی و مزیت‌بخش) -->
+    <section class="glass-card p-6 md:p-8 rounded-2xl space-y-6">
+      <h3 class="text-lg font-bold text-white flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+        مدل بصری اتلاف زمان و هزینه در وضعیت سنتی در برابر هم‌موجودی
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- وضعیت سنتی -->
+        <div class="bg-rose-950/20 border border-rose-900/40 rounded-xl p-5 space-y-3">
+          <div class="text-rose-400 font-bold text-sm">⛔ چرخه اتلاف فعلی (بدون هم‌موجودی)</div>
+          <div class="text-xs text-slate-300 font-mono space-y-2 leading-relaxed">
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">مشتری دایرکت می‌دهد ➔ کالای X ناموجود است</div>
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">جستجوی عصبی در تلگرام و دایرکت همکاران (۱۰ تا ۶۰ دقیقه)</div>
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">عدم اعتماد جهت واریز کارت‌به‌کارت مستقیم به فروشنده غریبه</div>
+            <div class="p-2 rounded bg-rose-950/60 border border-rose-800/80 text-rose-300 font-bold">نتیجه: ۵۰٪ رد سفارش + ۱۰۰٪ سوخت سود + تجربه تلخ خریدار</div>
+          </div>
+        </div>
+
+        <!-- وضعیت با سامانه -->
+        <div class="bg-brand-950/20 border border-brand-900/40 rounded-xl p-5 space-y-3">
+          <div class="text-brand-400 font-bold text-sm">✅ سفر بهینه‌شده با «هم‌موجودی»</div>
+          <div class="text-xs text-slate-300 font-mono space-y-2 leading-relaxed">
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">مشتری دایرکت می‌دهد ➔ کالای X تمام شده</div>
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">جستجوی ۳۰ ثانیه‌ای در کاتالوگ مشترک هم‌موجودی ➔ تطبیق فوری</div>
+            <div class="p-2 rounded bg-slate-900/60 border border-slate-800">تودیع امن وجه سفارش در حساب امانی تا صدور بارنامه پستی</div>
+            <div class="p-2 rounded bg-brand-950/60 border border-brand-800/80 text-brand-300 font-bold">نتیجه: سفارش نجات می‌یابد + کسر کارمزد ۳٪ + حفظ مشتری پیج</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ۴. ارزیابی ایده با پرسش‌های هشت‌گانه درس -->
+    <section class="glass-card p-6 md:p-8 rounded-2xl space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h3 class="text-xl font-bold text-white">ارزیابی ساختاریافته ایده بالغ (پرسش‌های هشت‌گانه سرفصل درس)</h3>
+        <span class="text-xs text-slate-400">تطبیق داده شده با اسلایدهای نقشه راه کسب‌وکار</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Q1 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۱. آیا تقاضای بالفعل و نیازی واقعی وجود دارد؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">بله؛ بازار ۸۸.۷ همتی اینستاگرام به شدت از عدم هماهنگی انبار رنج می‌برد. روزانه هزاران لید به دلیل فقدان سایز/رنگ خاص در دایرکت می‌سوزند.</p>
+        </div>
+        <!-- Q2 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۲. ایده واقعی است یا فرضیات ذهنی طراح؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">ریشه در واقعیت ملموس بازار دارد. فرضیه پرریسک اولیه «میزان اعتماد فروشندگان به پلتفرم واسط» است که با مکانیسم شبکه بسته شهری کنترل می‌شود.</p>
+        </div>
+        <!-- Q3 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۳. طبقه‌بندی ایده در چه قالبی است؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed"><span class="text-amber-300 font-semibold">ترکیبی (Combination):</span> تلفیق مدل جهانی مجازی‌سازی انبار (مانند Stockly) با سازوکار بومی امانی تلگرامی-بانکی متناسب با اکوسیستم ایران.</p>
+        </div>
+        <!-- Q4 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۴. سقف رشد و ظرفیت مقیاس‌پذیری کجاست؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">دارای اثر شبکه‌ای شدید (Network Effect). با افزایش اعضا، ضریب یافتن موجودی بالا می‌رود. گلوگاه مقیاس، عملیات تسویه مالی است نه زیرساخت سرور.</p>
+        </div>
+        <!-- Q5 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۵. مشتریان در ازای کدام ارزش پول می‌دهند؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">کارمزد ۲ تا ۳ درصدی از تراکنش موفق. فروشنده حاضر به پرداخت است چون جایگزین آن، از دست رفتن ۱۰۰٪ ارزش سفارش و سود پیج بوده است.</p>
+        </div>
+        <!-- Q6 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۶. امکان ارزیابی میدانی و بازخورد اولیه؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">بله؛ با راه‌اندازی پایلوت در یک صنف خاص (مثلاً اکسسوری یا پوشاک زنانه) با ۱۰ فروشنده فعال در یک هفته قابل تست است.</p>
+        </div>
+        <!-- Q7 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۷. سناریوهای واکنشی در برابر موانع؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">در صورت مانع اعتماد: استفاده از معرفین صنفی و رتبه‌بندی عمومی. در صورت چالش درگاه: تسویه با حساب امانی و ثبت شماره شبا با فیش دستی.</p>
+        </div>
+        <!-- Q8 -->
+        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-brand-400">۸. گزینه‌های جایگزین کاربران بدون سامانه؟</div>
+          <p class="text-xs text-slate-300 leading-relaxed">رد صریح سفارش و عذرخواهی از مشتری، پرس‌وجوی ناامن در گروه‌های متفرقه بدون هیچ‌گونه ضمانت بازگشت وجه یا ارسال بسته استاندارد.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ۵. جدول تفکیک مرزهای عملیات برخط و فیزیکی -->
+    <section class="glass-card p-6 md:p-8 rounded-2xl space-y-4">
+      <h3 class="text-lg font-bold text-white flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+        طبقه‌بندی و مرزبندی فرایندها (Online vs. Offline)
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-right text-xs md:text-sm">
+          <thead class="bg-slate-900/80 text-brand-400 border-b border-slate-800">
+            <tr>
+              <th class="p-3">مرحله فرایند</th>
+              <th class="p-3">عملیات درون‌خط (Online)</th>
+              <th class="p-3">عملیات برون‌خط و فیزیکی (Offline)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-slate-300">
+            <tr>
+              <td class="p-3 font-semibold text-white">۱. ثبت کالا</td>
+              <td class="p-3">ورود عنوان، عکس، تیراژ و قیمت در فرم MVP</td>
+              <td class="p-3 text-slate-400">—</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">۲. تطبیق و کشف</td>
+              <td class="p-3">مچینگ خودکار در دیتابیس مشترک کالاها</td>
+              <td class="p-3 text-slate-400">—</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">۳. تسویه و مالی</td>
+              <td class="p-3">قفل وجه فاکتور در حساب واسط امانی پلتفرم</td>
+              <td class="p-3">عملیات پایا/ساتنای بانکی میان‌حسابی</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">۴. لجستیک و ارسال</td>
+              <td class="p-3">ثبت بارکد ۲۴ رقمی رهگیری پست در پنل</td>
+              <td class="p-3">بسته‌بندی مرسوله و تحویل فیزیکی به باجه پست توسط فروشنده B</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">۵. نهایی‌سازی</td>
+              <td class="p-3">آزادسازی وجه به حساب فروشنده B با کسر ۳٪</td>
+              <td class="p-3">دریافت بسته توسط مشتری نهایی در مقصد</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ۶. تحلیل مستند: چرا این ایده تاکنون در ایران پیاده‌سازی نشده؟ -->
+    <section class="glass-card p-6 md:p-8 rounded-2xl space-y-6 border-amber-500/20 bg-gradient-to-b from-slate-900/90 to-slate-950">
+      <div class="border-b border-slate-800 pb-4">
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">بخش استدلالی و دفاعیه پروژه</span>
+        <h3 class="text-xl font-black text-white mt-1">چرا با وجود موفقیت مدل‌های جهانی مثل Stockly، در ایران اجرا نشده است؟</h3>
+      </div>
+      <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+        پلتفرم <span class="text-brand-400 font-bold">Stockly</span> در اروپا با بیش از ۴۵ میلیون دلار جذب سرمایه به ۱۰۰۰+ خرده‌فروش خدمات می‌دهد. اما غیبت آن در ایران به معنای ناکارآمدی ایده نیست، بلکه نتیجه سه چالش ساختاری است که «هم‌موجودی» برای عبور از آن‌ها طراحی شده است:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="text-amber-400 font-bold text-sm">۱. غیبت هویت رسمی و حقوقی</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            بازار اینستاگرام ایران عمدتاً در «اقتصاد غیررسمی» است. نبود اینماد و شناسه شرکتی باعث شده راه‌حل‌های کلاسیک B2B که نیازمند قرارداد ثبتی و دفاتر قانونی هستند، نتوانند وارد بازار فروشندگان اینستاگرامی شوند.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="text-amber-400 font-bold text-sm">۲. موانع رگولاتوری حساب امانی (Escrow)</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            بانک مرکزی زیرساخت ارائه‌دهنده سرویس Escrow رسمی را برای پلتفرم‌های خرد نوپا بسیار محدود کرده است. در هم‌موجودی، این چالش با پروتکل اعتماد انسانی و تسویه نیمه‌خودکارِ تضمین‌شده جایگزین شده است.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="text-amber-400 font-bold text-sm">۳. ناپایداری بستر شبکه و پلتفرم</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            محدودیت‌های اینترنت بین‌الملل و فیلترینگ ریسک پیوسته برای اینستاگرام ایجاد کرده است. در هم‌موجودی، دیتابیس بر بستری مستقل از اینستاگرام پیاده شده تا وابسته به سلامت یک شبکه خاص نباشد.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-brand-950/40 border border-brand-800/40 text-xs md:text-sm text-brand-200 leading-relaxed">
+        <strong>نتیجه‌گیری راهبردی:</strong> هم‌موجودی تقلید خام Stockly نیست؛ بلکه بازطراحی آن برای اقتصاد غیررسمی ایران از طریق خلق یک <strong>«لایه اعتماد سبک»</strong> است.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- بخش ب: محیط تعاملی و عملیاتی MVP -->
+  <!-- ========================================== -->
+  <main id="mvp-view" class="hidden flex-grow max-w-7xl mx-auto px-4 py-8 space-y-8">
+    
+    <!-- راهنمای تعاملی MVP -->
+    <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 border-brand-500/30">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-brand-500 animate-ping"></span>
+          <h2 class="text-lg font-bold text-white">آزمایشگاه زنده MVP (سناریوی پایه مچینگ و امانت)</h2>
+        </div>
+        <p class="text-xs text-slate-400">
+          در این بخش می‌توانید سناریوی فروشنده الف (که کالا را ندارد) و فروشنده ب (که کالا را دارد) را تست کرده و چرخه کامل نجات سفارش را مشاهده کنید.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="showRegisterModal()" class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-slate-950 font-bold text-xs shadow-md transition-all">
+          + افزودن کالای جدید به انبار ابری
+        </button>
+        <button onclick="resetData()" class="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs border border-slate-700">
+          بازنشانی به ۵ داده اولیه
+        </button>
+      </div>
+    </div>
+
+    <!-- آمار و شاخص‌های لحظه‌ای MVP -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="glass-card p-4 rounded-xl">
+        <div class="text-xs text-slate-400">اقلام موجود در استخر ابری</div>
+        <div id="stat-total-items" class="text-2xl font-black text-white mt-1">۵ قلم</div>
+      </div>
+      <div class="glass-card p-4 rounded-xl">
+        <div class="text-xs text-slate-400">سفارش‌های نجات‌یافته امروز</div>
+        <div id="stat-rescued-orders" class="text-2xl font-black text-brand-400 mt-1">۳ سفارش</div>
+      </div>
+      <div class="glass-card p-4 rounded-xl">
+        <div class="text-xs text-slate-400">گردش مالی حفظ‌شده</div>
+        <div class="text-2xl font-black text-emerald-300 mt-1">۱,۳۹۰,۰۰۰ ت</div>
+      </div>
+      <div class="glass-card p-4 rounded-xl">
+        <div class="text-xs text-slate-400">کارمزد پلتفرم (۳٪)</div>
+        <div class="text-2xl font-black text-amber-300 mt-1">۴۱,۷۰۰ ت</div>
+      </div>
+    </div>
+
+    <!-- سناریوی پایه: جستجو و نجات سفارش (Interaction Engine) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- فرم جستجوی سفارش کسری (فروشنده الف) -->
+      <div class="lg:col-span-5 glass-card p-6 rounded-2xl space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">A</span>
+            پنل فروشنده بدون کالا (درخواست کسری)
+          </h3>
+          <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">مشتری منتظر است</span>
+        </div>
+
+        <p class="text-xs text-slate-400">کالایی که مشتری در دایرکت می‌خواهد را جستجو یا انتخاب کنید:</p>
+
+        <!-- انتخاب سریع سناریوهای آماده -->
+        <div class="space-y-2">
+          <label class="text-xs text-slate-300 font-medium">انتخاب سریع از نمونه‌های ساختگی پروژه:</label>
+          <div class="grid grid-cols-1 gap-2">
+            <button onclick="fillRequestForm('ست ۳ عددی حوله دست')" class="text-right text-xs p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 transition flex items-center justify-between">
+              <span>ست ۳ عددی حوله دست (پنبه‌ای)</span>
+              <span class="text-brand-400 font-mono">۲۸۰,۰۰۰ تومان</span>
+            </button>
+            <button onclick="fillRequestForm('لیوان سرامیکی مینیمال')" class="text-right text-xs p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 transition flex items-center justify-between">
+              <span>لیوان سرامیکی دست‌ساز مینیمال</span>
+              <span class="text-brand-400 font-mono">۱۶۵,۰۰۰ تومان</span>
+            </button>
+            <button onclick="fillRequestForm('جوراب ساقدار فانتزی')" class="text-right text-xs p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 transition flex items-center justify-between">
+              <span>پک ۴ عددی جوراب ساقدار فانتزی</span>
+              <span class="text-brand-400 font-mono">۱۹۰,۰۰۰ تومان</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- فیلد دستی جستجو -->
+        <div class="pt-2">
+          <label class="text-xs text-slate-300 block mb-1">یا نام کالا را تایپ کنید:</label>
+          <div class="flex gap-2">
+            <input type="text" id="search-input" placeholder="مثال: حوله، شمع، کیف..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+            <button onclick="handleSearch()" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-slate-950 font-bold text-xs rounded-xl">
+              جستجو
+            </button>
+          </div>
+        </div>
+
+        <!-- پیش‌نمایش تطبیق یافته -->
+        <div id="match-result-container" class="hidden pt-3 border-t border-slate-800 space-y-3">
+          <div class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            انطباق با موفقیت پیدا شد!
+          </div>
+          <div id="matched-card-content" class="p-3 rounded-xl bg-slate-900 border border-emerald-900/50 space-y-2 text-xs">
+            <!-- دینامیک پر می‌شود -->
+          </div>
+          <button id="btn-initiate-escrow" onclick="startEscrowFlow()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-emerald-500 text-slate-950 font-bold text-xs shadow-md">
+            اتصال به همکار و قفل وجه در حساب امانی
+          </button>
+        </div>
+      </div>
+
+      <!-- وضعیت تراکنش و شبیه‌سازی لایه امانی (Escrow Status Tracker) -->
+      <div class="lg:col-span-7 glass-card p-6 rounded-2xl space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h3 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">🛡️</span>
+            سامانه رهگیری و حساب امانی (Escrow System)
+          </h3>
+          <span id="escrow-badge" class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">وضعیت: آماده سفارش جدید</span>
+        </div>
+
+        <!-- استپ‌های فرایند -->
+        <div class="grid grid-cols-4 gap-2 text-center text-[10px] md:text-xs">
+          <div id="step-1" class="p-2 rounded-lg bg-slate-800 text-slate-400 font-medium">۱. کشف و تطبیق</div>
+          <div id="step-2" class="p-2 rounded-lg bg-slate-800 text-slate-400 font-medium">۲. واریز به امانی</div>
+          <div id="step-3" class="p-2 rounded-lg bg-slate-800 text-slate-400 font-medium">۳. پست توسط فروشنده ب</div>
+          <div id="step-4" class="p-2 rounded-lg bg-slate-800 text-slate-400 font-medium">۴. تسویه نهایی</div>
+        </div>
+
+        <!-- جعبه توضیحات عملیاتی وضعیت -->
+        <div id="escrow-detail-box" class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3 min-h-[140px] flex flex-col justify-center">
+          <p class="text-xs text-slate-400 text-center">
+            جهت شروع فرآیند، از پنل سمت راست کالای کسری خود را انتخاب کرده و بر روی «اتصال به همکار» کلیک کنید.
+          </p>
+        </div>
+
+        <!-- دکمه‌های عملیاتی پیشبرد سناریو -->
+        <div id="escrow-actions" class="hidden flex flex-wrap gap-2 pt-2">
+          <!-- با JS به صورت پویا ساخته می‌شود -->
+        </div>
+
+        <!-- جدول لیست موجودی فعال در استخر -->
+        <div class="pt-4 border-t border-slate-800 space-y-3">
+          <div class="text-xs font-bold text-slate-300 flex items-center justify-between">
+            <span>📦 استخر کالاهای ثبت‌شده توسط همکاران (فروشندگان B)</span>
+            <span class="text-[10px] text-slate-500 font-normal">داده‌های ساختگی دمو</span>
+          </div>
+          <div class="max-h-48 overflow-y-auto space-y-2 pr-1" id="inventory-list">
+            <!-- با جاوااسکریپت پر می‌شود -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- مودال ثبت کالای جدید توسط فروشنده B -->
+  <div id="register-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-2xl border-slate-700 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h4 class="text-sm font-bold text-white">ثبت کالای مازاد در استخر هم‌موجودی</h4>
+        <button onclick="closeRegisterModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1">نام دقیق محصول:</label>
+          <input type="text" id="new-item-title" placeholder="مثلاً: هودی مشکی سایز L" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-slate-300 mb-1">قیمت نهایی فروشنده (تومان):</label>
+            <input type="number" id="new-item-price" placeholder="۲۵۰,۰۰۰" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">تعداد موجودی آزاد:</label>
+            <input type="number" id="new-item-qty" value="5" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">آیدی پیج یا نام فروشنده B:</label>
+          <input type="text" id="new-item-seller" placeholder="@gallery_tehran" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">شهر مبدا ارسال:</label>
+          <input type="text" id="new-item-city" placeholder="تهران، اصفهان، مشهد..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeRegisterModal()" class="px-3 py-2 rounded-lg bg-slate-800 text-slate-300 text-xs">انصراف</button>
+        <button onclick="addNewItem()" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-slate-950 font-bold text-xs">ثبت در پایگاه ابری</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <footer class="glass-card border-t border-slate-800 mt-auto py-6 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span>پروژه فاز اول درس مبانی تجارت و کسب‌وکار الکترونیکی — پاییز ۱۴۰۳</span>
+      <span>طراحی شده بر اساس مدل استخر اشتراکی موجودی و تسویه امانی</span>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- جاوااسکریپت و منطق عملیاتی MVP -->
+  <!-- ========================================== -->
+  <script>
+    // پایگاه داده ساختگی اولیه (Mock Database) طبق مستندات پروژه
+    const initialDatabase = [
+      { id: 1, title: 'ست ۳ عددی حوله دست', price: 280000, qty: 8, seller: '@arika_home', city: 'تهران', rating: '۴.۹' },
+      { id: 2, title: 'لیوان سرامیکی مینیمال', price: 165000, qty: 14, seller: '@ceramic_land', city: 'اصفهان', rating: '۴.۸' },
+      { id: 3, title: 'جوراب ساقدار فانتزی', price: 190000, qty: 25, seller: '@happy_socks_ir', city: 'شیراز', rating: '۴.۷' },
+      { id: 4, title: 'کیف پارچه‌ای دست‌دوز', price: 230000, qty: 6, seller: '@linen_bags', city: 'رشت', rating: '۵.۰' },
+      { id: 5, title: 'شمع معطر سویا واکس', price: 145000, qty: 11, seller: '@luna_candle', city: 'تهران', rating: '۴.۹' }
+    ];
+
+    let itemsDB = [...initialDatabase];
+    let selectedMatch = null;
+    let currentStep = 0;
+
+    // جابجایی بین دو نمای ناوبری (بخش الف و ب)
+    function switchTab(tab) {
+      const dossierView = document.getElementById('dossier-view');
+      const mvpView = document.getElementById('mvp-view');
+      const navDossier = document.getElementById('nav-dossier');
+      const navMvp = document.getElementById('nav-mvp');
+
+      if (tab === 'dossier') {
+        dossierView.classList.remove('hidden');
+        mvpView.classList.add('hidden');
+        navDossier.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition-all bg-brand-600 text-white shadow-md';
+        navMvp.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-white transition-all';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        dossierView.classList.add('hidden');
+        mvpView.classList.remove('hidden');
+        navMvp.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition-all bg-brand-600 text-white shadow-md';
+        navDossier.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-white transition-all';
+        renderInventoryList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // رندر کردن لیست موجودی همکاران
+    function renderInventoryList() {
+      const container = document.getElementById('inventory-list');
+      container.innerHTML = '';
+      itemsDB.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-between text-xs hover:border-slate-700 transition';
+        div.innerHTML = `
+          <div>
+            <div class="font-bold text-white">${item.title}</div>
+            <div class="text-[10px] text-slate-400">تأمین‌کننده: ${item.seller} (${item.city}) • امتیاز: ⭐ ${item.rating}</div>
+          </div>
+          <div class="text-left font-mono">
+            <div class="text-brand-400 font-bold">${item.price.toLocaleString('fa-IR')} ت</div>
+            <div class="text-[10px] text-slate-500">${item.qty} عدد موجود</div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+      document.getElementById('stat-total-items').innerText = `${itemsDB.length} قلم`;
+    }
+
+    // پر کردن خودکار فیلد جستجو
+    function fillRequestForm(title) {
+      document.getElementById('search-input').value = title;
+      handleSearch();
+    }
+
+    // منطق جستجو و تطبیق (Matching Engine)
+    function handleSearch() {
+      const query = document.getElementById('search-input').value.trim();
+      if (!query) return;
+
+      const found = itemsDB.find(i => i.title.includes(query) || query.includes(i.title.split(' ')[0]));
+      const resultBox = document.getElementById('match-result-container');
+      const cardContent = document.getElementById('matched-card-content');
+
+      if (found) {
+        selectedMatch = found;
+        const commission = Math.round(found.price * 0.03);
+        const sellerShare = found.price - commission;
+
+        cardContent.innerHTML = `
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="font-bold text-white text-sm">${found.title}</div>
+              <div class="text-slate-400 text-[11px]">موجود در انبار همکار: <span class="text-emerald-400 font-semibold">${found.seller}</span></div>
+            </div>
+            <span class="bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800 text-[10px]">موجودی قطعی</span>
+          </div>
+          <div class="grid grid-cols-3 gap-1 py-1.5 border-y border-slate-800 text-[11px] font-mono">
+            <div>قیمت به خریدار: <br><strong class="text-white">${found.price.toLocaleString('fa-IR')}</strong></div>
+            <div>سهم فروشنده ب: <br><strong class="text-emerald-400">${sellerShare.toLocaleString('fa-IR')}</strong></div>
+            <div>کارمزد پلتفرم (۳٪): <br><strong class="text-amber-400">${commission.toLocaleString('fa-IR')}</strong></div>
+          </div>
+          <div class="text-[10px] text-slate-400">📍 شهر ارسال‌کننده: ${found.city} (پست پیشتاز سراسری)</div>
+        `;
+        resultBox.classList.remove('hidden');
+      } else {
+        alert('موردی با این عنوان یافت نشد. می‌توانید مورد دیگری را جستجو نمایید یا خودتان آن را ثبت کنید.');
+        resultBox.classList.add('hidden');
+      }
+    }
+
+    // شبیه‌سازی مراحل سناریوی امانت (Escrow State Machine)
+    function startEscrowFlow() {
+      if (!selectedMatch) return;
+      currentStep = 2;
+      updateStepUI(2);
+
+      const detailBox = document.getElementById('escrow-detail-box');
+      const actionBox = document.getElementById('escrow-actions');
+      document.getElementById('escrow-badge').innerText = 'وضعیت: وجه در حساب امانی قفل شد';
+      document.getElementById('escrow-badge').className = 'text-[10px] bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded font-mono';
+
+      detailBox.innerHTML = `
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-amber-400">🔒 مرحله ۲: وجه سفارش نزد هم‌موجودی قفل شد</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            مشتری نهایی مبلغ <strong>${selectedMatch.price.toLocaleString('fa-IR')} تومان</strong> را واریز کرد. وجه در حساب واسط امن بلوکه شد. نوتیفیکیشن برای <strong>${selectedMatch.seller}</strong> ارسال گردید تا کالا را بسته‌بندی کند.
+          </p>
+        </div>
+      `;
+
+      actionBox.classList.remove('hidden');
+      actionBox.innerHTML = `
+        <button onclick="simulateShipping()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
+          🚚 شبیه‌سازی ثبت بارنامه پستی توسط ${selectedMatch.seller}
+        </button>
+      `;
+    }
+
+    function simulateShipping() {
+      currentStep = 3;
+      updateStepUI(3);
+      const trackingCode = '349820' + Math.floor(100000 + Math.random() * 900000);
+
+      const detailBox = document.getElementById('escrow-detail-box');
+      const actionBox = document.getElementById('escrow-actions');
+      document.getElementById('escrow-badge').innerText = 'وضعیت: کالا ارسال شد';
+      document.getElementById('escrow-badge').className = 'text-[10px] bg-indigo-950 text-indigo-300 border border-indigo-800 px-2 py-0.5 rounded font-mono';
+
+      detailBox.innerHTML = `
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-indigo-400">📦 مرحله ۳: بسته به پست تحویل شد</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            کد رهگیری پست پیشتاز ثبت شد: <code class="bg-black/60 px-2 py-0.5 rounded text-amber-300 font-mono text-xs">${trackingCode}</code>
+            <br>پیامک حاوی لینک رهگیری برای خریدار نهایی ارسال شد.
+          </p>
+        </div>
+      `;
+
+      actionBox.innerHTML = `
+        <button onclick="finalizeEscrow()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs transition">
+          ✅ تأیید تحویل مشتری و آزادسازی تسویه مالی
+        </button>
+      `;
+    }
+
+    function finalizeEscrow() {
+      currentStep = 4;
+      updateStepUI(4);
+      const commission = Math.round(selectedMatch.price * 0.03);
+      const netPayout = selectedMatch.price - commission;
+
+      const detailBox = document.getElementById('escrow-detail-box');
+      const actionBox = document.getElementById('escrow-actions');
+      document.getElementById('escrow-badge').innerText = 'وضعیت: تسویه کامل و موفق';
+      document.getElementById('escrow-badge').className = 'text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded font-mono';
+
+      detailBox.innerHTML = `
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-emerald-400">🎉 سفارش با موفقیت نجات یافت و تسویه شد!</div>
+          <div class="text-xs text-slate-300 space-y-1">
+            <div>• انتقال خالص <strong>${netPayout.toLocaleString('fa-IR')} تومان</strong> به شبای فروشنده ب (${selectedMatch.seller})</div>
+            <div>• ثبت کارمزد <strong>${commission.toLocaleString('fa-IR')} تومان</strong> برای پلتفرم هم‌موجودی</div>
+            <div>• مشتری در پیج شما حفظ شد و تجربه موفق ثبت گردید.</div>
+          </div>
+        </div>
+      `;
+
+      actionBox.innerHTML = `
+        <button onclick="resetFlow()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs">
+          🔄 آزمایش سناریوی جدید
+        </button>
+      `;
+
+      // کاهش موقت از موجودی
+      selectedMatch.qty -= 1;
+      renderInventoryList();
+    }
+
+    function updateStepUI(step) {
+      for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById(`step-${i}`);
+        if (i <= step) {
+          el.className = 'p-2 rounded-lg bg-brand-600 text-slate-950 font-bold text-[10px] md:text-xs shadow-sm';
+        } else {
+          el.className = 'p-2 rounded-lg bg-slate-800 text-slate-400 font-medium text-[10px] md:text-xs';
+        }
+      }
+    }
+
+    function resetFlow() {
+      selectedMatch = null;
+      document.getElementById('match-result-container').classList.add('hidden');
+      document.getElementById('search-input').value = '';
+      document.getElementById('escrow-badge').innerText = 'وضعیت: آماده سفارش جدید';
+      document.getElementById('escrow-badge').className = 'text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono';
+      document.getElementById('escrow-detail-box').innerHTML = `
+        <p class="text-xs text-slate-400 text-center">
+          جهت شروع فرآیند، از پنل سمت راست کالای کسری خود را انتخاب کرده و بر روی «اتصال به همکار» کلیک کنید.
+        </p>
+      `;
+      document.getElementById('escrow-actions').classList.add('hidden');
+      updateStepUI(1);
+    }
+
+    // افزودن محصول توسط فروشنده B
+    function showRegisterModal() {
+      document.getElementById('register-modal').classList.remove('hidden');
+    }
+
+    function closeRegisterModal() {
+      document.getElementById('register-modal').classList.add('hidden');
+    }
+
+    function addNewItem() {
+      const title = document.getElementById('new-item-title').value.trim();
+      const price = parseInt(document.getElementById('new-item-price').value);
+      const qty = parseInt(document.getElementById('new-item-qty').value) || 1;
+      const seller = document.getElementById('new-item-seller').value.trim() || '@seller_new';
+      const city = document.getElementById('new-item-city').value.trim() || 'تهران';
+
+      if (!title || isNaN(price)) {
+        alert('لطفاً عنوان و قیمت را با دقت وارد نمایید.');
+        return;
+      }
+
+      const newItem = {
+        id: itemsDB.length + 1,
+        title,
+        price,
+        qty,
+        seller,
+        city,
+        rating: '۵.۰'
+      };
+
+      itemsDB.unshift(newItem);
+      renderInventoryList();
+      closeRegisterModal();
+
+      document.getElementById('new-item-title').value = '';
+      document.getElementById('new-item-price').value = '';
+
+      alert(`کالای «${title}» با موفقیت به استخر موجودی ابری اضافه شد و اکنون برای همکاران قابل تطبیق است.`);
+    }
+
+    function resetData() {
+      itemsDB = [...initialDatabase];
+      renderInventoryList();
+      resetFlow();
+    }
+
+    // لود اولیه
+    window.addEventListener('DOMContentLoaded', () => {
+      renderInventoryList();
+    });
+  </script>
+</body>
+</html>
